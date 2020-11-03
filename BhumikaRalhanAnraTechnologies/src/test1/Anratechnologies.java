@@ -63,10 +63,13 @@ public class Anratechnologies
 		Driversetup d = new Driversetup();
 		driver = d.launch();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		System.out.println("Coming to Amazon Website");
 		driver.findElement(By.xpath(AmazonSearchbox )).click();
 		driver.findElement(By.xpath(AmazonSearchbox )).sendKeys("Selenium Books");
 		Thread.sleep(3000);
 		driver.findElement(By.xpath(AmazonSearchbox)).sendKeys(Keys.ENTER);
+		
+		System.out.println("Coming to Click the next button in the bottom of the page through Javascript Executor");
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		//clicking on the next button in the bottom
 		js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div[17]/span/div/div/ul/li[7]/a")));
@@ -74,14 +77,15 @@ public class Anratechnologies
 		driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div[17]/span/div/div/ul/li[7]/a")).click();
 		Thread.sleep(5000);
 		// Clicking on low cost book
-		System.out.println("Coming to click the lown cost book");
+		System.out.println("Coming to click the book which has lowest cost on tat page");
         driver.findElement(By.xpath(LowcostBook)).click();
         // Adding book to the cart
+        System.out.println("Adding book to the cart");
         driver.findElement(By.xpath(AddToCartButton)).click();
         
         Thread.sleep(4000);
         System.out.println("Book adding to the cart successfully");
-        System.out.println("Coming to click the basket cart");
+        System.out.println("Coming to click the basket ");
         WebDriverWait wait = new WebDriverWait(driver,10);
         WebElement ele = driver.findElement(By.xpath(Cart));
         wait.until(ExpectedConditions.elementToBeClickable(ele));
@@ -90,6 +94,8 @@ public class Anratechnologies
 		// driver.findElement(By.xpath(Cart)).click();
         
         System.out.println("Clicking on the cart successfully");
+        // driver.findElement(By.xpath(ProceedToCheckout)).click();
+        // Thread.sleep(4000);
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath(LowiodineCookBookurl))).build().perform();
         Thread.sleep(4000);

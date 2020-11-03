@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 	    WebDriver driver = new ChromeDriver();
 	    driver.navigate().to(Url);
 		driver.manage().window().maximize();
+		System.out.println("Maximising the window and opening the amazon url");
 		return driver;
 		
 	}
